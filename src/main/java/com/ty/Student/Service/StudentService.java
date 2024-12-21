@@ -10,9 +10,6 @@ import java.util.List;
 @Service
 public class StudentService {
 
-//    @Autowired
-//    private Student student;
-
     @Autowired
     private StudentInterface studentInterface;
 
@@ -22,7 +19,6 @@ public class StudentService {
 
 
     public Student save(Student student){
-//        studentInterface.save(student)
         return studentInterface.save(student);
     }
 
@@ -53,12 +49,13 @@ public class StudentService {
         return "Deleted All records";
     }
 
-    public Boolean updatefname(int id, String fname) {
+    public String updatefname(int id, String fname) {
         boolean exists = studentInterface.existsById(id);
         if (exists) {
             Student s = studentInterface.getReferenceById(id);
             s.setFname(fname);
-            return studentInterface.save(s);
+            studentInterface.save(s);
+            return "Fname updated";
         }
         return null;
 
