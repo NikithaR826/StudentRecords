@@ -46,12 +46,13 @@ public class StudentController {
 
     @PutMapping("/student/{id}/{fname}")
     public ResponseEntity<String> updateStudentFname(@PathVariable int id, @PathVariable String fname) {
-        boolean updated = studentService.updatefname(id, fname);
+        String updated = studentService.updatefname(id, fname);
 
-        if(updated) {
-            return new ResponseEntity<>("Student updated successfully", HttpStatus.OK);
-        } else {
+
+        if(updated==null) {
             return new ResponseEntity<>("Student not found or update failed", HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>("Student updated successfully", HttpStatus.OK);
         }
     }
 
