@@ -6,21 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 public class StudentController {
 
+    private static final Logger logger = LogManager.getLogger(StudentController.class);
+
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private StudentService.Service2 service2;
 
     @GetMapping("/students")
     public ResponseEntity<List> getAllStudents(){
         List<Student> str= studentService.getStudents();
+        service2.print();
+        logger.info("StudentCOntroller");
         return new ResponseEntity<>(str, HttpStatus.OK);
     }
+
 
     @PostMapping("/student/save")
     public ResponseEntity<Student> insertStudent(@RequestBody Student student){

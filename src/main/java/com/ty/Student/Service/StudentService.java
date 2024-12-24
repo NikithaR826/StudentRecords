@@ -3,6 +3,7 @@ package com.ty.Student.Service;
 import com.ty.Student.entities.Student;
 import com.ty.Student.repo.StudentInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -59,6 +60,14 @@ public class StudentService {
         }
         return null;
 
+    }
+
+    @Component
+    public class Service2{
+        public void print()
+        {
+            System.out.println("hello!");
+        }
     }
 
 
