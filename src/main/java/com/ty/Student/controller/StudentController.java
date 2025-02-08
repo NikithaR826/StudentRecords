@@ -61,7 +61,7 @@ public class StudentController {
 
 
         if(updated==null) {
-            return new ResponseEntity<>("Student not found or update failed", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Student not found", HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<>("Student updated successfully", HttpStatus.OK);
         }
