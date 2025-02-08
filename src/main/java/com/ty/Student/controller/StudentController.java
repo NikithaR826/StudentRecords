@@ -2,6 +2,7 @@ package com.ty.Student.controller;
 
 import com.ty.Student.Service.StudentService;
 import com.ty.Student.entities.Student;
+import com.ty.Student.repo.StudentInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +21,14 @@ public class StudentController {
     private StudentService studentService;
     @Autowired
     private StudentService.Service2 service2;
+    @Autowired
+    private StudentInterface studentInterface;
 
     @GetMapping("/students")
     public ResponseEntity<List> getAllStudents(){
         List<Student> str= studentService.getStudents();
         service2.print();
-        logger.info("StudentCOntroller");
+        logger.info(studentInterface.getFname(11));
         return new ResponseEntity<>(str, HttpStatus.OK);
     }
 
